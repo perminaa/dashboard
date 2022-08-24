@@ -49,7 +49,7 @@ function populate_fields() {
 
 function load_options() {
     $.ajax({
-        url: "config.php",
+        url: "config.php/",
         method: "POST",
         data: {
             table: "inv_assets"
@@ -98,4 +98,5 @@ function save_options() {
     }).done(function (data) {
     }).fail(function (error) {
     });
+    $('.modal').modal('toggle');
 }

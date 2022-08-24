@@ -18,11 +18,11 @@ function OpenConnection()
 {
 	$serverName = "3.138.92.49,1433";
 	$connectionOptions = array("Database"=>"dashboard",
-		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>false);
+		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>true;
 	$conn = sqlsrv_connect($serverName, $connectionOptions);
 	if($conn == false){
 		debug_to_console("Connection Failed!");
-		die(FormatErrors(sqlsrv_errors()));
+		die(var_dump(sqlsrv_errors()));
 	}
 	return $conn;
 }
@@ -39,7 +39,7 @@ function ReadData($table)
 		
 		$fieldMetadata = sqlsrv_field_metadata( $stmt );
 		if ($stmt == FALSE)
-			die(FormatErrors(sqlsrv_errors()));
+			die(var_dump(sqlsrv_errors()));
 
 		while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
 		{

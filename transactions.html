@@ -20,8 +20,8 @@
 	<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <!-- Custom files -->
 	<script src="transactions.js"></script>
-	<script src="functions.js?rev=15"></script>
-	<link rel="stylesheet" href="style.css?rev=11">
+	<script src="functions.js?rev=17"></script>
+	<link rel="stylesheet" href="style.css?rev=12">
     <!-- Datatable styling -->
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 </head>
@@ -76,7 +76,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<button id="submitButton" type="button" class="btn result_btn" onClick="transactions()">
+				<button id="submitButton" type="button" class="btn result_btn" onClick="pull_data('dbo.LOG_ASSETS')">
 					Get Results
 				</button>
 			</div>
