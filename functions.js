@@ -87,7 +87,7 @@ function pull_data(selected_table) {
 	}).done(function (data) {
 		$(".container").toggleClass("results");
 		$('.results').html("");
-
+		console.log(data);
 		data = JSON.parse(data);
 
 		header = '<table id="datatable" class="display" style="width:100%"><thead><tr>';
