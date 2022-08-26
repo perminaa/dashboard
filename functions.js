@@ -60,15 +60,25 @@ function pull_data(selected_table) {
   </div>`;
 
 	export_buttons = `
-	<div class="container">
+	<div class="container reports">
+	<div class="row justify-content-center">
+	<div class="col-lg-4">
+		<button id="submitButton" type="button" class="dt-button" onClick="select_all_rows()">
+			Select All
+		</button>
+	</div>
+	<div class="col-lg-4">
+		<button id="submitButton" type="button" class="dt-button" onClick="deselect_all_rows()">
+			Deselect All
+		</button>
+	</div>
+	</div>
 	<div class="row">
-	<div class="col-lg-3 copybutton">
+	<div class="col-lg-4 csvbutton">
 	</div>
-	<div class="col-lg-3 csvbutton">
+	<div class="col-lg-4 excelbutton">
 	</div>
-	<div class="col-lg-3 excelbutton">
-	</div>
-	<div class="col-lg-3 pdfbutton">
+	<div class="col-lg-4 pdfbutton">
 	</div>
 	</div>
 	</div>
@@ -117,10 +127,10 @@ function pull_data(selected_table) {
 			scrollY: '60vh',
 			dom: 'Blfrtip',
 			buttons: [
-				{ extend: 'copy', className: 'copyButton'},
 				{ extend: 'csv', className: 'csvButton'},
 				{ extend: 'excel', className: 'excelButton'},
-				{ extend: 'pdf', className: 'pdfButton'}
+				{ extend: 'pdf', className: 'pdfButton', orientation: 'landscape',
+                pageSize: 'LEGAL'}
 			],
 			select: {
 				style: 'multi+shift'
@@ -128,10 +138,6 @@ function pull_data(selected_table) {
 		});
 		
 		$('.results').append(export_buttons);
-
-		table.buttons().container().appendTo($('.results'));
-		var copy = $('.copyButton').detach();
-		$('.copybutton').append(copy);
 
 		var csv = $('.csvButton').detach();
 		$('.csvbutton').append(csv);
@@ -170,4 +176,9 @@ function choice_check() {
 function select_all_rows() {
 	var table = $('#datatable').DataTable().draw();
 	table.rows().select();
+}
+
+function deselect_all_rows() {
+	var table = $('#datatable').DataTable().draw();
+	table.rows().deselect();
 }

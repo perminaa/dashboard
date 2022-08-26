@@ -1,0 +1,17 @@
+button.dt-button {
+  background-color: #F09C34;
+  color: white;
+  font-weight: bold;
+  width: 75%;
+  margin: auto;
+  margin-bottom: 1%;
+}
+
+.reports {
+    background : none;
+}
+
+.reports > .row {
+    text-align: center;
+    margin-bottom: 1%;
+}
