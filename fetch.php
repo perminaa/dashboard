@@ -16,7 +16,7 @@ function debug_to_console($data) {
 function OpenConnection()
 {
 	$serverName = "3.138.92.49,1433";
-	$connectionOptions = array("Database"=>"dashboard",
+	$connectionOptions = array("Database"=>"Dashboard_MASTER",
 		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>true, 'ReturnDatesAsStrings'=>true);
 	$conn = sqlsrv_connect($serverName, $connectionOptions);
 	if($conn == false){

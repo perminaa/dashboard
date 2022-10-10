@@ -1,16 +1,18 @@
 body {
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-body, html {
-    height: 100%;
-    padding-top: 20px;
+
+body,
+html {
+  height: 100%;
+  padding-top: 20px;
 }
 
 .container {
   background-color: rgba(56, 80, 103, .88);
   margin: auto;
-  z-index:999;
+  z-index: 999;
 }
 
 .center {
@@ -83,11 +85,11 @@ body, html {
   font-weight: bold;
 }
 
-.results > .row {
+.results>.row {
   padding-top: 1%;
 }
 
-.col-lg-6 > .form-control {
+.col-lg-6>.form-control {
   margin-top: 1%;
   margin-bottom: 1%;
 }
@@ -98,7 +100,17 @@ body, html {
 
 .custom-toggler.navbar-toggler {
   border-color: #F09C34;
-} 
+}
+
+.databasebtn {
+  border-color: #F09C34;
+  background-color: #F09C34;
+}
+
+.databasebtn:hover {
+  border-color: #F09C34;
+  background-color: #F09C34;
+}
 
 .navbar-logo {
   width: 20%;
@@ -165,6 +177,7 @@ body .loader {
   margin: auto;
   width: 400px;
 }
+
 body .loader_cogs {
   z-index: -2;
   width: 100px;
@@ -177,23 +190,28 @@ body .loader_cogs {
   bottom: 0;
   margin: auto;
 }
+
 body .loader_cogs__top {
   position: relative;
   width: 100px;
   height: 100px;
   transform-origin: 50px 50px;
   -webkit-animation: rotate 10s infinite linear;
-          animation: rotate 10s infinite linear;
+  animation: rotate 10s infinite linear;
 }
+
 body .loader_cogs__top div:nth-of-type(1) {
   transform: rotate(30deg);
 }
+
 body .loader_cogs__top div:nth-of-type(2) {
   transform: rotate(60deg);
 }
+
 body .loader_cogs__top div:nth-of-type(3) {
   transform: rotate(90deg);
 }
+
 body .loader_cogs__top div.top_part {
   width: 100px;
   border-radius: 10px;
@@ -201,6 +219,7 @@ body .loader_cogs__top div.top_part {
   height: 100px;
   background: #F09C34;
 }
+
 body .loader_cogs__top div.top_hole {
   width: 50px;
   height: 50px;
@@ -214,6 +233,7 @@ body .loader_cogs__top div.top_hole {
   bottom: 0;
   margin: auto;
 }
+
 body .loader_cogs__left {
   position: relative;
   width: 80px;
@@ -224,15 +244,19 @@ body .loader_cogs__left {
   left: -24px;
   height: 80px;
 }
+
 body .loader_cogs__left div:nth-of-type(1) {
   transform: rotate(30deg);
 }
+
 body .loader_cogs__left div:nth-of-type(2) {
   transform: rotate(60deg);
 }
+
 body .loader_cogs__left div:nth-of-type(3) {
   transform: rotate(90deg);
 }
+
 body .loader_cogs__left div.left_part {
   width: 80px;
   border-radius: 6px;
@@ -240,6 +264,7 @@ body .loader_cogs__left div.left_part {
   height: 80px;
   background: #F09C34;
 }
+
 body .loader_cogs__left div.left_hole {
   width: 40px;
   height: 40px;
@@ -253,26 +278,31 @@ body .loader_cogs__left div.left_hole {
   bottom: 0;
   margin: auto;
 }
+
 body .loader_cogs__bottom {
   position: relative;
   width: 60px;
   top: -65px;
   transform-origin: 30px 30px;
   -webkit-animation: rotate_left 10.2s 0.4s infinite linear;
-          animation: rotate_left 10.2s 0.4s infinite linear;
+  animation: rotate_left 10.2s 0.4s infinite linear;
   transform: rotate(4deg);
   left: 79px;
   height: 60px;
 }
+
 body .loader_cogs__bottom div:nth-of-type(1) {
   transform: rotate(30deg);
 }
+
 body .loader_cogs__bottom div:nth-of-type(2) {
   transform: rotate(60deg);
 }
+
 body .loader_cogs__bottom div:nth-of-type(3) {
   transform: rotate(90deg);
 }
+
 body .loader_cogs__bottom div.bottom_part {
   width: 60px;
   border-radius: 5px;
@@ -280,6 +310,7 @@ body .loader_cogs__bottom div.bottom_part {
   height: 60px;
   background: #F09C34;
 }
+
 body .loader_cogs__bottom div.bottom_hole {
   width: 30px;
   height: 30px;
@@ -299,47 +330,92 @@ body .loader_cogs__bottom div.bottom_hole {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 @keyframes rotate {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
+
 @-webkit-keyframes rotate_left {
   from {
     transform: rotate(16deg);
   }
+
   to {
     transform: rotate(376deg);
   }
 }
+
 @keyframes rotate_left {
   from {
     transform: rotate(16deg);
   }
+
   to {
     transform: rotate(376deg);
   }
 }
+
 @-webkit-keyframes rotate_right {
   from {
     transform: rotate(4deg);
   }
+
   to {
     transform: rotate(364deg);
   }
 }
+
 @keyframes rotate_right {
   from {
     transform: rotate(4deg);
   }
+
   to {
     transform: rotate(364deg);
   }
+}
+
+.loading {
+  display: none;
+}
+
+.d-flex {
+  width: 9rem; 
+  height: 9rem;
+
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  z-index: 1000;
+}
+
+.spinner-border {
+  width: 3rem; 
+  height: 3rem;
+}
+
+.database-management {
+  margin-bottom: 3%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.database-management > button {
+  width: 50%;
 }

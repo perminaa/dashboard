@@ -2,100 +2,103 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="images/icon.png">
-    <title>Dashboard | Admin</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous"/>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <link rel="icon" href="images/icon.png">
+  <title>Dashboard | Admin</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="functions.js?rev=7"></script>
-    <script src="admin.js?rev=11"></script>
-    <link rel="stylesheet" href="style.css?rev=4">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="functions.js?rev=7"></script>
+  <script src="admin.js?rev=20"></script>
+  <link rel="stylesheet" href="style.css?rev=9">
 </head>
 
 <body style='background-image: url("images/back.png")'>
-    <nav class="navbar navbar-expand-md fixed-top">
-		<div class="container-fluid">
-			<a class="navbar-brand">ADMIN</a>
-			<button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
-				data-bs-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
-				<ul class="navbar-nav">
-					<li class="nav-item">
-						<a class="nav-link" href="index.html">Home</a>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-							data-bs-toggle="dropdown" aria-expanded="false">
-							Reporting
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-							<li><a class="dropdown-item" href="inventory.html">Inventory</a></li>
-							<li><a class="dropdown-item" href="jobs.html">Jobs</a></li>
-							<li><a class="dropdown-item" href="retag.html">Retag</a></li>
-							<li><a class="dropdown-item" href="lookup.html">Asset Lookup</a></li>
-							<li><a class="dropdown-item" href="queue.html">Asset Import Queue</a></li>
-							<li><a class="dropdown-item" href="units.html">Business Units & Users</a></li>
-							<li><a class="dropdown-item" href="transactions.html">Move Transactions</a></li>
-						</ul>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="admin.html">Admin</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#">Help</a>
-					</li>
-				</ul>
-			</div>
-			<img src="images/TechTrackerLogo.png" class="navbar-logo">
-		</div>
-	</nav>
-
-    <div class="center">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="card ho">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <b>Field Configuration</b>
-                            </h4>
-                            <img src="images/cogs.png">
-                            <a class="stretched-link" href="#bannerformmodal" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="load_options()"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card ho">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <b>Database Status</b>
-                            </h4>
-                            <img src="images/database.png">
-                            <a href="#" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card ho">
-                        <div class="card-body">
-                            <h4 class="card-title">
-                                <b>User Configuration</b>
-                            </h4>
-                            <img src="images/user.png">
-                            <a href="#" class="stretched-link"></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <nav class="navbar navbar-expand-md fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand">ADMIN</a>
+      <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Reporting
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="inventory.html">Inventory</a></li>
+              <li><a class="dropdown-item" href="jobs.html">Jobs</a></li>
+              <li><a class="dropdown-item" href="retag.html">Retag</a></li>
+              <li><a class="dropdown-item" href="lookup.html">Asset Lookup</a></li>
+              <li><a class="dropdown-item" href="queue.html">Asset Import Queue</a></li>
+              <li><a class="dropdown-item" href="units.html">Business Units & Users</a></li>
+              <li><a class="dropdown-item" href="transactions.html">Move Transactions</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">Admin</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Help</a>
+          </li>
+        </ul>
+      </div>
+      <img src="images/TechTrackerLogo.png" class="navbar-logo">
     </div>
-  
+  </nav>
+
+  <div class="center">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="card ho">
+            <div class="card-body">
+              <h4 class="card-title">
+                <b>Field Configuration</b>
+              </h4>
+              <img src="images/cogs.png">
+              <a class="stretched-link" href="#bannerformmodal" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                onclick="load_options()"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card ho">
+            <div class="card-body">
+              <h4 class="card-title">
+                <b>Database Status</b>
+              </h4>
+              <img src="images/database.png">
+              <a class="stretched-link" href="#bannerformmodal" data-bs-toggle="modal"
+                data-bs-target="#databaseModal"></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card ho">
+            <div class="card-body">
+              <h4 class="card-title">
+                <b>User Configuration</b>
+              </h4>
+              <img src="images/user.png">
+              <a href="#" class="stretched-link"></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
       <div class="modal-content">
@@ -104,7 +107,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <div class="container options"></div>
+          <div class="container options"></div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -113,7 +116,89 @@
       </div>
     </div>
   </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+  <div class="modal fade" id="databaseModal" tabindex="-1" aria-labelledby="databaseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="databaseModalLabel">Database Status</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="loading">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-fluid">
+            <div class="row database-management">
+              <table class="table table-hover table-bordered table-striped table-responsive-md">
+                <thead>
+                  <tr>
+                    <th>Server Name</th>
+                    <th>Database Name</th>
+                    <th>Connection Status</th>
+                    <th>Connection ID</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody id="connection_Data">
+                </tbody>
+              </table>
+            </div>
+            <div class="row database-management">
+              <button type="button" class="btn btn-primary databasebtn" onclick="test_connection()">Test
+                Connections</button>
+            </div>
+            <div class="row database-management">
+              <table class="table table-hover table-bordered table-striped table-responsive-md">
+                <thead>
+                  <tr>
+                    <th>Server Name</th>
+                    <th>Database Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><input type="text" id="server"></td>
+                    <td><input type="text" id="database"></td>
+                    <td><input type="text" id="username"></td>
+                    <td><input type="password" id="password"></td>
+                    <td><button class="btn btn-success" type="button" onClick="add_connection();">Add</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row database-management">
+              <button type="button" class="btn btn-primary databasebtn" onclick="update_data()">Update Data</button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loading">
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+    integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>

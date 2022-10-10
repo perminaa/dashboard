@@ -13,12 +13,11 @@ function debug_to_console($data) {
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
 }
 
-
 function OpenConnection()
 {
 	$serverName = "3.138.92.49,1433";
 	$connectionOptions = array("Database"=>"Dashboard_MASTER",
-		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>true);
+		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>true, 'ReturnDatesAsStrings'=>true);
 	$conn = sqlsrv_connect($serverName, $connectionOptions);
 	if($conn == false){
 		debug_to_console("Connection Failed!");
@@ -27,23 +26,28 @@ function OpenConnection()
 	return $conn;
 }
 
-function ReadData($table)
+function ReadData()
 {
-	$results = array();
-
 	try
 	{
 		$conn = OpenConnection();
 
-		$stmt = sqlsrv_query($conn, "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'$table'");
-		
-		$fieldMetadata = sqlsrv_field_metadata( $stmt );
-		if ($stmt == FALSE)
-			die(var_dump(sqlsrv_errors()));
+		$stmt = sqlsrv_query($conn, 'EXEC Dashboard_MASTER.dbo.pull_data;');
+        echo $stmt;
+		if ($stmt == FALSE) {
+            die(var_dump(sqlsrv_errors()));
+        }
 
-		while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+        $rows = sqlsrv_has_rows($stmt);
+        echo $rows;
+
+        if ($rows == TRUE){
+            echo 'Test';
+        }
+
+		while($row = sqlsrv_fetch_array($stmt))
 		{
-			$results[] = $row["COLUMN_NAME"];
+            echo $row[0];
 		}
 
 		sqlsrv_free_stmt($stmt);
@@ -56,8 +60,8 @@ function ReadData($table)
 	return $results;
 }
 
-$table = $_POST['function'];
-$data = ReadData($table);
+$data = ReadData();
 
 echo json_encode(array("results"=>$data));
+
 ?>
