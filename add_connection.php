@@ -26,7 +26,7 @@ function OpenConnection()
 	return $conn;
 }
 
-function ReadData()
+function add_connection()
 {
 	$results = array();
 	$params = array();
@@ -34,7 +34,6 @@ function ReadData()
 	array_push($params, $_POST['database']);
 	array_push($params, $_POST['username']);
 	array_push($params, $_POST['password']);
-	debug_to_console($params);
 
 	try
 	{
@@ -69,7 +68,84 @@ function ReadData()
 	return $results;
 }
 
-$data = ReadData();
+function test_connection()
+{
+	try
+	{
+		$conn = OpenConnection();
+
+		$stmt = sqlsrv_query($conn, 'EXEC test_connections;');
+		$stmt = sqlsrv_query($conn, 'SELECT * FROM TEST_CONN;');
+
+		if ($stmt == FALSE) {
+            die(var_dump(sqlsrv_errors()));
+        }
+
+        $fieldMetadata = sqlsrv_field_metadata( $stmt );
+
+		while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+		{
+			$result = array();
+
+			foreach($fieldMetadata as $value) {
+				$result[$value['Name']] = $row[$value['Name']];
+			}
+
+			$results[] = $result;
+		}
+
+		sqlsrv_free_stmt($stmt);
+		sqlsrv_close($conn);
+	}
+	catch(Exception $e)
+	{
+		echo("Error!");
+	}
+	return $results;
+}
+
+function valid_connection()
+{
+	$results = array();
+	$params = array();
+	array_push($params, $_POST['server']);
+	array_push($params, $_POST['database']);
+
+	try
+	{
+		$conn = OpenConnection();
+
+		$stmt = sqlsrv_query($conn, "SELECT con_status FROM TEST_CONN WHERE server_name LIKE ? AND table_name LIKE ?;", $params);
+		if ($stmt == FALSE) {
+            die(var_dump(sqlsrv_errors()));
+        }
+
+        $fieldMetadata = sqlsrv_field_metadata( $stmt );
+
+		while($row = sqlsrv_fetch_array($stmt, SQLSRV_FETCH_ASSOC))
+		{
+			$result = array();
+
+			foreach($fieldMetadata as $value) {
+				$result[$value['Name']] = $row[$value['Name']];
+			}
+
+			$results[] = $result;
+		}
+
+		sqlsrv_free_stmt($stmt);
+		sqlsrv_close($conn);
+	}
+	catch(Exception $e)
+	{
+		echo("Error!");
+	}
+	return $results;
+}
+
+add_connection();
+test_connection();
+$data = valid_connection();
 
 echo json_encode(array("results"=>$data));
 

@@ -91,7 +91,8 @@
                 <b>User Configuration</b>
               </h4>
               <img src="images/user.png">
-              <a href="#" class="stretched-link"></a>
+              <a class="stretched-link" href="#bannerformmodal" data-bs-toggle="modal"
+                data-bs-target="#configModal"></a>
             </div>
           </div>
         </div>
@@ -110,6 +111,8 @@
           <div class="container options"></div>
         </div>
         <div class="modal-footer">
+          <input type="checkbox" id="selectall" name="selectall" value="selectall">
+          <label class="choice orange-font" for="selectall">Select All</label>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" onclick="save_options()">Save changes</button>
         </div>
@@ -151,8 +154,8 @@
               </table>
             </div>
             <div class="row database-management">
-              <button type="button" class="btn btn-primary databasebtn" onclick="test_connection()">Test
-                Connections</button>
+              <button type="button" class="btn btn-primary databasebtn" onclick="test_connection();"><b>Test
+                  Connections</b></button>
             </div>
             <div class="row database-management">
               <table class="table table-hover table-bordered table-striped table-responsive-md">
@@ -171,17 +174,57 @@
                     <td><input type="text" id="database"></td>
                     <td><input type="text" id="username"></td>
                     <td><input type="password" id="password"></td>
-                    <td><button class="btn btn-success" type="button" onClick="add_connection();">Add</button></td>
+                    <td><button class="btn btn-success" type="button" onclick="add_connection();">Add</button></td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <div class="row database-management">
-              <button type="button" class="btn btn-primary databasebtn" onclick="update_data()">Update Data</button>
+              <button type="button" class="btn btn-primary databasebtn" onclick="update_data();"><b>Update
+                  Data</b></button>
             </div>
           </div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for User Configurations -->
+  <div class="modal fade" id="configModal" tabindex="-1" aria-labelledby="configModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="configModalLabel">User Configurations</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="loading">
+            <div class="d-flex justify-content-center">
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only"></span>
+              </div>
+            </div>
+          </div>
+          <div class="container useroptions">
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <label for="files">Choose a file:</label>
+          <select name="files" id="files">
+            <option value="config1">Configuration 1</option>
+            <option value="config2">Configuration 2</option>
+            <option value="config3">Configuration 3</option>
+            <option value="config4">Configuration 4</option>
+          </select>
+          <button type="button" class="btn btn-primary databasebtn" onclick="save_user_configuration();"><b>Save To File</b></button>
+          <button type="button" class="btn btn-primary databasebtn" onclick="populate_user_fields();"><b>Pull
+              Data</b></button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
