@@ -13,8 +13,10 @@ function dataToFile($filename, $data){
 }
 
 $json = json_encode($_POST['update']);
+$userfile = substr(json_encode($_POST['filename']), 1, 7);
 
+echo $userfile;
 echo $json;
 
-dataToFile("config/test.json", $json);
+dataToFile("config/{$userfile}.json", $json);
 ?>

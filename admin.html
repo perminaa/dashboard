@@ -108,7 +108,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <div class="container options"></div>
+          <div class="container options" id="adminlist"></div>
         </div>
         <div class="modal-footer">
           <input type="checkbox" id="selectall" name="selectall" value="selectall">
@@ -209,22 +209,20 @@
               </div>
             </div>
           </div>
-          <div class="container useroptions">
+          <div class="container useroptions" id="userlist">
 
           </div>
 
         </div>
         <div class="modal-footer">
           <label for="files">Choose a file:</label>
-          <select name="files" id="files">
+          <select name="files" id="files" onchange="load_user_options();">
             <option value="config1">Configuration 1</option>
             <option value="config2">Configuration 2</option>
             <option value="config3">Configuration 3</option>
             <option value="config4">Configuration 4</option>
           </select>
           <button type="button" class="btn btn-primary databasebtn" onclick="save_user_configuration();"><b>Save To File</b></button>
-          <button type="button" class="btn btn-primary databasebtn" onclick="populate_user_fields();"><b>Pull
-              Data</b></button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>
       </div>

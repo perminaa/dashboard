@@ -2,6 +2,7 @@ $(window).on('load', function () {
     populate_fields();
     load_options();
     test_connection();
+    populate_user_fields();
 });
 
 
@@ -74,7 +75,7 @@ function save_options() {
     $("input:checkbox").each(function () {
         var $this = $(this);
 
-        if ($this.is(":checked")) {
+        if ($this.is("#adminlist :checked")) {
             accepted_fields.push($this.attr("id"));
         }
     });
@@ -88,7 +89,7 @@ function save_options() {
         json_object[myArray[1]].push(myArray[0]);
     });
 
-    console.log(json_object);
+    // console.log(json_object);
 
     $.ajax({
         url: "save_config.php",
@@ -97,10 +98,12 @@ function save_options() {
             update: JSON.stringify(json_object)
         }
     }).done(function (data) {
-        console.log(data);
+        // console.log(data);
+        $(".useroptions").html("");
+        populate_user_fields();
+        $('#exampleModal').modal('toggle');
     }).fail(function (error) {
     });
-    $('#exampleModal').modal('toggle');
 }
 
 function update_data() {
@@ -222,37 +225,88 @@ function populate_user_fields(){
         }
     }).done(function (data) {
         data = JSON.parse(data);
-        console.log(data);
 
         $.each(data, function(index, value){
             if(index == "undefined"){
                 return;
             }
 
+            result = '';
             $(".useroptions").append('<br><div class="row choice">' + index + '</div>');
-            console.log(index + ": " + value);
 
-            $.each(data[index], function (key, field) {
+            $.each(value, function (key, field) {
                 if (key % 3 == 0) {
                     $(".useroptions").append(result);
                     result = '<div class="row">';
                 }
                 row = '<div class="col-md-4"><input type="checkbox" id="' + field + "__" + index +
-                    '" name="' + field + '" value="' + field +
+                    '_user" name="' + field + '" value="' + field +
                     '" class="checkboxAll" ><label class="choice" for="' + field +
                     '">' + field + '</label></div>';
                 result = result.concat(row);
-                if (data[index].length % 3 != 0 && key + 1 == data[index].length) {
+                if (value.length % 3 != 0 && key + 1 == value.length) {
                     result = result.concat('</div>');
                     $(".useroptions").append(result);
                 }
             });
         });
+        load_user_options();
+    }).fail(function (error) {
+    });
 
+}
+
+function save_user_configuration(){
+    accepted_fields = [];
+    json_object = {};
+
+    $("input:checkbox").each(function () {
+        var $this = $(this);
+
+        if ($this.is("#userlist :checked")) {
+            accepted_fields.push($this.attr("id"));
+        }
+    });
+    $.each(accepted_fields, function (index, value) {
+        myArray = value.split("__");
+
+        if (!(myArray[1] in json_object)) {
+            json_object[myArray[1]] = [];
+        }
+
+        json_object[myArray[1]].push(myArray[0]);
+    });
+
+    $.ajax({
+        url: "save_user_config.php",
+        method: "POST",
+        data: {
+            update: JSON.stringify(json_object),
+            filename: $('#files option:selected').val()
+        }
+    }).done(function (data) {
     }).fail(function (error) {
     });
 }
 
-function save_user_configuration(){
-    console.log($('#files option:selected').val());
+function load_user_options() {
+    $('#userlist input[type=checkbox]').prop('checked', false);
+
+    $.ajax({
+        url: "user_config.php/",
+        method: "POST",
+        data: {
+            table: "inv_assets",
+            filename: $('#files option:selected').val()
+        }
+    }).done(function (data) {
+        config = JSON.parse(data);
+
+        $.each(config, function (key, value) {
+            $.each(config[key], function (index, value) {
+                $('#' + value + "__" + key + '').prop('checked', true);
+            });
+        });
+    }).fail(function (error) {
+    });
 }

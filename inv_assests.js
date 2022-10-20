@@ -4,17 +4,18 @@ $(window).on('load', function () {
 
 function load_options() {
     $.ajax({
-        url: "config.php",
-        method: "GET",
+        url: "user_config.php",
+        method: "POST",
         data: {
-            table: "INV_ASSETS"
+            table: "INV_ASSETS",
+            filename: "config2"
         }
     }).done(function (data) {
         config = JSON.parse(data);
 
         table=''
 
-        $.each(config["INV_ASSETS"], function(index, value){
+        $.each(config["INV_ASSETS_user"], function(index, value){
             if (index % 2 == 0){
                 table = table.concat('<div class="row">');
             }
@@ -29,7 +30,7 @@ function load_options() {
                 table = table.concat('</div>');
             }
 
-            if (config["INV_ASSETS"].length % 2 != 0 && index+1 == config["INV_ASSETS"].length){
+            if (config["INV_ASSETS_user"].length % 2 != 0 && index+1 == config["INV_ASSETS_user"].length){
                 table = table.concat('</div>');
             }
         });
