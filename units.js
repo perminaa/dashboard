@@ -4,17 +4,19 @@ $(window).on('load', function () {
 
 function load_options() {
     $.ajax({
-        url: "config.php",
-        method: "GET",
+        url: "user_config.php",
+        method: "POST",
         data: {
-            table: "BUSINESS_UNITS"
+            table: "BUSINESS_UNITS",
+            filename: $('#files option:selected').val()
         }
     }).done(function (data) {
+        $(".allresults").html("");
         config = JSON.parse(data);
 
         table=''
 
-        $.each(config["BUSINESS_UNITS"], function(index, value){
+        $.each(config["BUSINESS_UNITS_user"], function(index, value){
             if (index % 2 == 0){
                 table = table.concat('<div class="row">');
             }
@@ -29,11 +31,11 @@ function load_options() {
                 table = table.concat('</div>');
             }
 
-            if (config["BUSINESS_UNITS"].length % 2 != 0 && index+1 == config["BUSINESS_UNITS"].length){
+            if (config["BUSINESS_UNITS_user"].length % 2 != 0 && index+1 == config["BUSINESS_UNITS_user"].length){
                 table = table.concat('</div>');
             }
         });
-        $(".results").prepend(table);
+        $(".allresults").prepend(table);
     }).fail(function (error) {
     });
 }

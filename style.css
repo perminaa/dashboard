@@ -52,6 +52,8 @@ html {
 }
 
 .col-lg-12 {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
@@ -422,4 +424,12 @@ body .loader_cogs__bottom div.bottom_hole {
 
 .orange-font {
   color: rgba(56, 80, 103, .88);
+}
+
+.form-select {
+  width: 50%;
+}
+
+#files {
+  text-align: center;
 }

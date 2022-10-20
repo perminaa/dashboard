@@ -8,9 +8,10 @@ function load_options() {
         method: "POST",
         data: {
             table: "INV_ASSETS",
-            filename: "config2"
+            filename: $('#files option:selected').val()
         }
     }).done(function (data) {
+        $(".allresults").html("");
         config = JSON.parse(data);
 
         table=''
@@ -34,7 +35,7 @@ function load_options() {
                 table = table.concat('</div>');
             }
         });
-        $(".results").prepend(table);
+        $(".allresults").prepend(table);
     }).fail(function (error) {
     });
 }
