@@ -16,7 +16,7 @@ function OpenConnection()
 {
 	$serverName = "3.138.92.49,1433";
 	$connectionOptions = array("Database"=>"Dashboard_MASTER",
-		"Uid"=>"sa", "PWD"=>"Monster1234!", "Encrypt"=>true, "TrustServerCertificate"=>true, 'ReturnDatesAsStrings'=>true);
+		"Uid"=>"sa", "PWD"=>"Monster4321!", "Encrypt"=>true, "TrustServerCertificate"=>true, 'ReturnDatesAsStrings'=>true);
 	$conn = sqlsrv_connect($serverName, $connectionOptions);
 	if($conn == false){
 		debug_to_console("Connection Failed!");
